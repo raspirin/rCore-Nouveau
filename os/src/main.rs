@@ -5,15 +5,18 @@
 mod console;
 mod lang_items;
 mod sbi;
+mod logging;
 
-use core::arch::{asm, global_asm};
 use crate::sbi::shutdown;
+use core::arch::global_asm;
+use crate::console::print_in_color;
 global_asm!(include_str!("entry.asm"));
 
 #[no_mangle]
 pub fn rust_main() -> ! {
     clear_bss();
     println!("Hello, world!");
+    print_in_color(format_args!("Paint it. Turn it black."), 31);
     shutdown();
     //loop {}
 }
