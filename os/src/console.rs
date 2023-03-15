@@ -13,7 +13,6 @@ impl Write for Stdout {
     }
 }
 
-
 #[macro_export]
 macro_rules! print {
     ($fmt: literal $(, $($arg: tt)+)?) => {
