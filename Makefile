@@ -9,6 +9,5 @@ build:
 strip:
 	rust-objcopy --strip-all os/target/riscv64gc-unknown-none-elf/release/os -O binary os/target/riscv64gc-unknown-none-elf/release/os.bin
 
-
 clean:
 	cargo clean
