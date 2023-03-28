@@ -2,10 +2,12 @@
 #![no_main]
 #![feature(panic_info_message)]
 
+mod batch;
 mod console;
 mod lang_items;
 mod logging;
 mod sbi;
+mod sync;
 
 use crate::sbi::shutdown;
 use core::arch::global_asm;
@@ -16,6 +18,7 @@ global_asm!(include_str!("entry.asm"));
 pub fn rust_main() -> ! {
     clear_bss();
     logging::init();
+    println!("[kernel] hello, world");
     shutdown();
 }
 
