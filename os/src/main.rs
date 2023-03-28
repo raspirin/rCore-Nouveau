@@ -8,19 +8,23 @@ mod lang_items;
 mod logging;
 mod sbi;
 mod sync;
-mod trap;
 mod syscall;
+mod trap;
 
 use crate::sbi::shutdown;
 use core::arch::global_asm;
 
 global_asm!(include_str!("entry.asm"));
+global_asm!(include_str!("link_app.S"));
 
 #[no_mangle]
 pub fn rust_main() -> ! {
     clear_bss();
     logging::init();
+    trap::init();
+    batch::init();
     println!("[kernel] hello, world");
+    batch::run_next_app();
     shutdown();
 }
 
