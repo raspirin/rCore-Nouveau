@@ -8,6 +8,8 @@ mod lang_items;
 mod logging;
 mod sbi;
 mod sync;
+mod trap;
+mod syscall;
 
 use crate::sbi::shutdown;
 use core::arch::global_asm;
